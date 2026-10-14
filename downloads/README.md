@@ -1,6 +1,6 @@
 # MAYBEVERSE — ZIP produksi
 
-`maybeverse-production.zip` berisi build produksi yang sudah divalidasi dengan 24 tes browser. Arsip ini berisi seluruh aset dan font lokal; tidak memerlukan dependensi atau build tambahan untuk diunggah ke hosting statis.
+`maybeverse-production.zip` berisi build produksi yang sudah divalidasi dengan 26 pemeriksaan browser (24 fitur utama dan 2 khusus GitHub Pages). Arsip ini berisi seluruh aset dan font lokal; tidak memerlukan dependensi atau build tambahan untuk diunggah ke hosting statis.
 
 1. Unduh [ZIP produksi](https://github.com/radliwahid17-dotcom/surprise-for-maybe/raw/refs/heads/main/downloads/maybeverse-production.zip).
 2. Ekstrak ZIP ke folder di perangkat Anda.

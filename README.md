@@ -32,6 +32,10 @@ Pengujian memakai Chromium sistem jika ada `/usr/bin/chromium`. Di mesin lain ja
 
 ## Deploy menjadi URL publik
 
+**GitHub Pages:** build khusus dengan `npm run build:pages`. Hasilnya di `dist-pages`, dengan path aset `/surprise-for-maybe/`. Isi build ini dipublikasikan di branch `gh-pages` (root). Setelah GitHub Pages diaktifkan, alamat website adalah `https://radliwahid17-dotcom.github.io/surprise-for-maybe/`; pengunjung cukup membuka link di browser, tanpa mengunduh atau memasang aplikasi.
+
+Jika hosting belum aktif, pemilik repositori dapat membuka **Settings → Pages**, memilih **Deploy from a branch**, branch **gh-pages**, folder **/(root)**, lalu **Save**. GitHub akan menjalankan deployment. Pengaturan ini memerlukan akses administrasi repositori; keberadaan branch saja belum membuktikan website sudah terbit.
+
 Konfigurasi Vercel dan Netlify sudah disertakan. Upload/push berkas proyek ini ke repositori GitHub milik Anda terlebih dahulu. Website dapat diakses tanpa login setelah deploy; hanya pemilik yang memerlukan akun penyedia untuk melakukan deployment.
 
 **Vercel:** pilih **Add New → Project**, import `radliwahid17-dotcom/surprise-for-maybe`, pilih framework **Vite**, build command `npm run build`, output directory `dist`, Node.js **24.x**, lalu **Deploy**. Jika checkout proyek berada dalam folder lain di repositori, atur Root Directory sesuai folder tersebut. Tidak perlu environment variables. Vercel memberikan URL HTTPS publik setelah deployment berhasil.
@@ -40,7 +44,7 @@ Konfigurasi Vercel dan Netlify sudah disertakan. Upload/push berkas proyek ini k
 
 **Netlify dengan upload manual:** jalankan `npm run build`, lalu drag folder `dist` ke [Netlify Drop](https://app.netlify.com/drop). Ikuti alur akun/klaim situs Netlify untuk menyimpan deployment. Folder `dist`, bukan source proyek, yang diunggah.
 
-Deploy di root domain/subdomain. Navigasi surat terakhir menggunakan hash `#one-last-thing`, sehingga tidak memerlukan routing backend. Tidak ada server aplikasi untuk dioperasikan.
+Build default di `dist` digunakan untuk root domain/subdomain Vercel atau Netlify. Build `dist-pages` digunakan untuk GitHub Pages di path proyek. Navigasi surat terakhir menggunakan hash `#one-last-thing`, sehingga tidak memerlukan routing backend. Tidak ada server aplikasi untuk dioperasikan.
 
 ## PWA dan privasi
 
