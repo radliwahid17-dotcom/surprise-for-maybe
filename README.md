@@ -8,7 +8,15 @@ A tiny universe made just to see you smile. Dibuat untuk Maybe, dari Radli.
 
 Website sudah diterbitkan melalui GitHub Pages. Pengunjung cukup membuka link dari HP atau laptop.
 
-Website React + TypeScript + Vite dengan ilustrasi SVG orisinal, Motion, Lucide, dan font lokal. Tidak membutuhkan akun, database, API, atau variabel rahasia. Semua interaksi berjalan di browser; mood, sound, dan penemuan disimpan hanya di perangkat pengunjung.
+Website React + TypeScript + Vite dengan ilustrasi SVG orisinal, Motion, Lucide, dan font lokal. Tidak membutuhkan akun, database, API, atau variabel rahasia. Semua interaksi berjalan di browser; mood, sound, penemuan, dan koleksi Mochi disimpan hanya di perangkat pengunjung.
+
+## Pink Mochi
+
+Maskot resmi MAYBEVERSE adalah kelinci cream-pink dari [referensi desain asli](design-reference/PINK_MOCHI_DESIGN.md). Bentuk badan, telinga pink, mata mungil, pipi rosy, mulut omega, dan badge hati dipertahankan. Komponen SVG yang sama digunakan di seluruh website, termasuk mini game dan surat terakhir.
+
+Kamar Mochi menyediakan elus, peluk, camilan, tidur/bangun, dance, gelitik, dan cerita acak dengan reaksi serta animasi yang berbeda. Delapan pilihan aksesori dapat dikoleksi melalui perawatan dan permainan; koleksi, outfit, dan skor terbaik tetap tersimpan setelah refresh. Jendela, lampu kamar, sambutan saat kembali, scrapbook, pesan pribadi Radli, dan ending tersembunyi melengkapi pengalaman. Seluruh mood, surat, kejutan, permainan, dan rahasia sebelumnya tetap tersedia.
+
+[Bukti visual dan catatan verifikasi](design-reference/verification/README.md) mencakup perbandingan referensi asli dengan SVG, desktop, tampilan mobile, kamar, closet, dan ending.
 
 ## Unduh website
 
@@ -34,7 +42,7 @@ npm run preview     # Melihat build production
 npm test            # Build + pengujian browser nyata
 ```
 
-Pengujian memakai Chromium sistem jika ada `/usr/bin/chromium`. Di mesin lain jalankan `npx playwright install chromium`, atau tentukan path melalui `PLAYWRIGHT_CHROMIUM_EXECUTABLE`. Tes mencakup welcome, 6 mood, 7 surat, 32 kejutan, 60 pengingat, semua mini game, Easter Egg, aksesibilitas, penyimpanan, layout 320/390/768/1440 px, dan PWA offline. Hasil dan screenshot disimpan di `test-results/`.
+Pengujian memakai Chromium sistem jika ada `/usr/bin/chromium`. Di mesin lain jalankan `npx playwright install chromium`, atau tentukan path melalui `PLAYWRIGHT_CHROMIUM_EXECUTABLE`. Sebanyak 45 tes mencakup welcome, 6 mood, 7 surat, 32 kejutan, 60 pengingat, semua mini game, Easter Egg, kamar dan ekspresi Pink Mochi, koleksi aksesori, ending baru, aksesibilitas, penyimpanan, layout 320/390/768/1440 px, dan PWA offline. Hasil dan screenshot disimpan di `test-results/`.
 
 ## Deploy menjadi URL publik
 
@@ -62,6 +70,6 @@ Pengingat harian menggunakan tanggal lokal perangkat, tidak berubah saat refresh
 
 ## Mengubah konten
 
-Pesan mood, surat, pengingat, kejutan, dan surat penutup ada di `src/data.ts`. Maskot SVG ada di `src/Mochi.tsx`, permainan di `src/Games.tsx`, dan gaya di `src/styles.css`. Service worker dibuat saat build dengan daftar aset dan versi cache sesuai build, agar tidak menyimpan nama chunk lama.
+Pesan mood, surat, pengingat, kejutan, dan surat penutup lama ada di `src/data.ts`. Maskot resmi ada di `src/PinkMochi.tsx` dan diekspor melalui `src/Mochi.tsx`; identitasnya mengikuti referensi desain. Perawatan dan penyimpanan profil ada di `src/Companion.tsx`, kamar di `src/MochiBedroom.tsx`, serta aksesori dan pesan baru di `src/mochi-data.ts`. Permainan ada di `src/Games.tsx`; gaya dasar ada di `src/styles.css` dan tema Pink Mochi di `src/pink-world.css`. Service worker dibuat saat build dengan daftar aset dan versi cache sesuai build, agar tidak menyimpan nama chunk lama.
 
 Made for Maybe. Made with care. Made by Radli. ♡

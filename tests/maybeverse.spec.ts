@@ -269,7 +269,7 @@ test("five secret interactions, discoveries persisted, final letter and hug", as
   ).toBeVisible();
   await expect(
     page.getByRole("button", { name: "Sapa Mochi" }).getByRole("img"),
-  ).toHaveAttribute("aria-label", "Super Mochi, bintang pahlawan kecil");
+  ).toHaveAttribute("aria-label", "Super Pink Mochi, kelinci pahlawan kecil");
 });
 
 test("sound is opt-in, toggles and persists", async ({ page }) => {

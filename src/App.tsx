@@ -22,6 +22,7 @@ import {
   Sun,
   Volume2,
   VolumeX,
+  PawPrint,
 } from "lucide-react";
 import { Cat, Daisy, LogoStar, Mochi } from "./Mochi";
 import Modal from "./Modal";
@@ -37,6 +38,8 @@ import {
   type Message,
 } from "./data";
 import { chooseOther, localDay, readSaved, save } from "./storage";
+import { useCompanion } from "./Companion";
+import { MochiBedroom, PinkHiddenEnding } from "./MochiBedroom";
 
 type OpenModal =
   | { type: "welcome" }
@@ -45,7 +48,8 @@ type OpenModal =
   | { type: "secret" }
   | { type: "catch" }
   | { type: "bubble" }
-  | { type: "find" };
+  | { type: "find" }
+  | { type: "hidden-ending" };
 type Celebration = { type: Effect; id: number };
 const secretMessages = [
   "Mochi nyasar di sini gara-gara nyium aroma cemilan. Pesan rahasianya: makan dulu, May!",
@@ -113,12 +117,13 @@ function ReactionArt({
   effect: Effect;
   expression?: string;
 }) {
+  const mochi = useCompanion();
   if (effect === "cat") return <Cat />;
   if (effect === "hug")
     return (
       <div className="hug-art">
-        <Mochi />
-        <Mochi className="mochi-friend" />
+        <Mochi expression="hug" accessory={mochi.profile.accessory} />
+        <Mochi className="mochi-friend" expression="hug" accessory="ribbon" />
         <Heart className="hug-heart" fill="currentColor" />
       </div>
     );
@@ -127,11 +132,13 @@ function ReactionArt({
       className={effect === "dance" ? "dancing" : "bob"}
       expression={expression}
       superhero={effect === "meteor"}
+      accessory={mochi.profile.accessory}
     />
   );
 }
 
 export default function App() {
+  const mochi = useCompanion();
   const [modal, setModal] = useState<OpenModal | null>(null);
   const [welcomeAnswer, setWelcomeAnswer] = useState<string | null>(null);
   const [soundOn, setSoundOn] = useState(
@@ -298,6 +305,7 @@ export default function App() {
       save("discoveries", next);
       return next;
     });
+    mochi.syncDiscoveries();
   }
   function closeModal() {
     if (modal?.type === "welcome") save("welcomed", true);
@@ -313,6 +321,7 @@ export default function App() {
     const next = [...found, index];
     setFound(next);
     save("found-mochis", next);
+    mochi.syncDiscoveries();
     setHunt(true);
     if (next.length === 4) discover("find-mochi");
     reveal({
@@ -353,6 +362,7 @@ export default function App() {
     playSound("note");
   }
   function sendHug() {
+    mochi.care("hug");
     playSound("note");
     celebrate("hearts");
     setHugging(true);
@@ -378,6 +388,7 @@ export default function App() {
             {!final && (
               <nav aria-label="Navigasi utama">
                 <a href="#mood">Your mood</a>
+                <a href="#mochi-room">Mochi’s room</a>
                 <a href="#letters">Love notes</a>
                 <a href="#play">Little joys</a>
               </nav>
@@ -474,28 +485,29 @@ export default function App() {
                     From Radli, <b>your biggest supporter.</b> ♡
                   </span>
                 </div>
+                <a className="hero-room-link" href="#mochi-room">
+                  <PawPrint size={14} /> A tiny bunny is waiting for you{" "}
+                  <ArrowRight size={14} />
+                </a>
               </div>
               <div
                 className="hero-art"
                 aria-label="Dunia kecil Mochi di antara awan, bunga, dan hati"
               >
-                <div className="art-orbit" />
-                <div className="art-arch">
-                  <div className="arch-grid" />
-                  <div className="cloud art-cloud-one" />
-                  <div className="cloud art-cloud-two" />
-                  <span className="arch-star s1">✧</span>
-                  <span className="arch-star s2">✦</span>
-                  <span className="arch-star s3">✧</span>
-                  <div className="landscape landscape-back" />
-                  <div className="landscape landscape-front" />
-                  <div className="art-flower flower-left">
-                    <Daisy />
-                  </div>
-                  <div className="art-flower flower-right">
-                    <Daisy />
-                  </div>
-                </div>
+                <div className="pink-halo" aria-hidden="true" />
+                <div className="art-orbit" aria-hidden="true" />
+                <span className="pink-spark pink-spark-one" aria-hidden="true">
+                  ✦
+                </span>
+                <span className="pink-spark pink-spark-two" aria-hidden="true">
+                  ✧
+                </span>
+                <span
+                  className="pink-spark pink-spark-three"
+                  aria-hidden="true"
+                >
+                  ✿
+                </span>
                 <span className="art-heart heart-one">♥</span>
                 <span className="art-heart heart-two">♡</span>
                 <span className="art-sparkle">✦</span>
@@ -507,6 +519,7 @@ export default function App() {
                   aria-label="Sapa Mochi"
                   onClick={() => {
                     mochiTaps.current++;
+                    mochi.care("pet");
                     playSound("pop");
                     if (mochiTaps.current % 5 === 0) {
                       discover("super-mochi");
@@ -521,14 +534,17 @@ export default function App() {
                 >
                   <Mochi
                     superhero={discovered.includes("super-mochi")}
-                    expression={mood ?? "happy"}
+                    expression={mochi.expression}
+                    accessory={mochi.profile.accessory}
                   />
                 </button>
                 <div className="art-speech">
-                  hi, May! <span>♡</span>
+                  Hey May!
+                  <br />
+                  You got this! <span>✧</span>
                 </div>
                 <div className="art-tag">
-                  <span>✿</span> a pocket full of sunshine
+                  <span>♡</span> Mochi loves you
                 </div>
                 <div className="art-note">
                   <span>special delivery</span>
@@ -590,6 +606,7 @@ export default function App() {
                     onClick={() => {
                       setMood(item.id);
                       save("mood", item.id);
+                      mochi.reactToMood(item.id);
                       reveal(item);
                     }}
                   >
@@ -609,6 +626,27 @@ export default function App() {
                   : "Nggak perlu dijelasin. Pilih aja yang paling terasa kayak kamu."}
               </p>
             </section>
+
+            <MochiBedroom
+              onSound={() => playSound("pop")}
+              discoveries={discovered}
+              onWish={() => {
+                discover("window-wish");
+                reveal({
+                  title: "Dari jendela kecil, buat hati kamu.",
+                  text: "Mochi baru nemu catatan Radli di balik bintang: “May, kalau hari ini berat, jangan lupa ada tempat yang selalu seneng kamu pulang. Di sini, di hati gua, di mana pun kita bisa saling nemenin.” ♡",
+                  emoji: "💌",
+                  effect: "hearts",
+                });
+              }}
+              onHiddenEnding={() => {
+                if (!mochi.secretReady) return;
+                discover("pink-ending");
+                playSound("note");
+                celebrate("hearts");
+                setModal({ type: "hidden-ending" });
+              }}
+            />
 
             <section
               className="care-grid section-wrap"
@@ -1031,9 +1069,16 @@ export default function App() {
             <article className="final-letter">
               <p>{finalLetter}</p>
               <div className={`final-hug ${hugging ? "hugging" : ""}`}>
-                <Mochi />
+                <Mochi
+                  expression={hugging ? "hug" : "happy"}
+                  accessory={mochi.profile.accessory}
+                />
                 <Heart fill="currentColor" />
-                <Mochi className="mochi-friend" />
+                <Mochi
+                  className="mochi-friend"
+                  expression={hugging ? "hug" : "happy"}
+                  accessory="ribbon"
+                />
               </div>
               <button className="primary-button" onClick={sendHug}>
                 Send a virtual hug 🫂
@@ -1181,6 +1226,9 @@ export default function App() {
                   celebrate("hearts");
                 }}
                 sound={() => playSound("pop")}
+                onComplete={(score) => mochi.recordGame("catch", score)}
+                bestScore={mochi.profile.bestCatch}
+                accessory={mochi.profile.accessory}
               />
             )}
             {modal.type === "bubble" && (
@@ -1190,11 +1238,13 @@ export default function App() {
                   celebrate("confetti");
                 }}
                 sound={() => playSound("pop")}
+                onComplete={() => mochi.recordGame("bubble")}
+                accessory={mochi.profile.accessory}
               />
             )}
             {modal.type === "find" && (
               <div className="find-content">
-                <Mochi className="bob" />
+                <Mochi className="bob" accessory={mochi.profile.accessory} />
                 <span className="eyebrow">CALLING DETECTIVE MAY</span>
                 <h2 id="modal-title">Where are you, Mochi?</h2>
                 <p>
@@ -1226,6 +1276,16 @@ export default function App() {
                   <ArrowRight size={16} />
                 </button>
               </div>
+            )}
+            {modal.type === "hidden-ending" && (
+              <PinkHiddenEnding
+                onClose={closeModal}
+                onHug={() => {
+                  mochi.care("hug");
+                  playSound("note");
+                  celebrate("hearts");
+                }}
+              />
             )}
           </Modal>
         )}

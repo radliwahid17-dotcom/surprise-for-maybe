@@ -1,0 +1,2302 @@
+/* Pink Mochi's palette and proportions follow the mandatory design reference. */
+:root {
+  --strawberry: #b56682;
+  --blush: #f6dce4;
+  --vanilla: #fffaf6;
+  --peach: #f8e0d2;
+  --soft-lavender: #eae0ef;
+  --mint: #e6edde;
+  --ink: #654949;
+}
+body {
+  background: #fffaf6;
+  color: var(--ink);
+}
+.site-header {
+  background: #fffaf6ee;
+  border-color: #efdde0;
+}
+.brand-star {
+  color: #b97893;
+}
+.site-header nav {
+  gap: 25px;
+}
+.primary-button {
+  background: #a55a77;
+}
+.primary-button:hover {
+  background: #964f6d;
+}
+.hero {
+  padding-top: 42px;
+  padding-bottom: 43px;
+  min-height: 600px;
+}
+.hero h1 {
+  color: #654949;
+}
+.hero h1 em {
+  color: #c07993;
+}
+.hero-art {
+  height: 500px;
+  margin: 0;
+  scale: 1;
+}
+.pink-halo {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  left: 50%;
+  top: 43px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 25%, #ffebdd, #f9decd 60%, #f5d9d5);
+  box-shadow: inset 0 0 50px #fff2;
+  z-index: 0;
+}
+.hero-art .art-orbit {
+  width: 460px;
+  height: 460px;
+  top: 23px;
+  border-color: #e9cec3;
+}
+.hero-mochi {
+  width: 330px;
+  top: 40px;
+  left: 50%;
+  animation: none;
+  transform: translateX(-50%);
+  filter: drop-shadow(0 15px 13px #926a6520);
+  z-index: 3;
+}
+.hero-mochi:hover {
+  filter: drop-shadow(0 17px 15px #a97a8026);
+}
+.hero-mochi:active {
+  transform: translateX(-50%) scale(0.97);
+}
+.hero-art .art-speech {
+  right: -7px;
+  top: 86px;
+  font-size: 16px;
+  line-height: 1.45;
+  padding: 12px 19px;
+  background: #fffaf6;
+  color: #8c5f63;
+  border-color: #edcbd0;
+  transform: rotate(7deg);
+}
+.hero-art .art-speech span {
+  color: #b27c9e;
+}
+.hero-art .art-tag {
+  top: 440px;
+  left: 49%;
+  padding: 10px 19px;
+  font-family: var(--serif);
+  font-size: 14px;
+  color: #945968;
+  background: #fff5ee;
+  border-color: #e6c5bc;
+  transform: translateX(-50%) rotate(-5deg);
+}
+.hero-art .art-tag span {
+  color: #ba7890;
+  font-size: 18px;
+}
+.hero-art .art-note {
+  bottom: 68px;
+  left: -3px;
+  width: 155px;
+  padding: 20px 15px 16px;
+  background: #fae8e2;
+  color: #79534e;
+  border-color: #e5c5bd;
+}
+.hero-art .art-note small,
+.hero-art .art-note span {
+  color: #805b56;
+}
+.hero-art .art-note small {
+  font-size: 8px;
+}
+.hero-art .art-note b {
+  font-size: 14px;
+}
+.hero-art .art-daisy {
+  left: 22px;
+  top: 39px;
+  width: 71px;
+}
+.hero-art .heart-one {
+  left: 15px;
+  top: 202px;
+  font-size: 39px;
+}
+.hero-art .heart-two {
+  right: 0;
+  top: 302px;
+  font-size: 39px;
+}
+.hero-art .art-sparkle {
+  right: 47px;
+  top: 28px;
+}
+.hero-art .meet-mochi {
+  right: 17px;
+  bottom: 11px;
+  font-size: 16px;
+  color: #855e61;
+}
+.hero-art .meet-mochi small {
+  color: #79565a;
+  font-size: 9px;
+}
+.pink-spark {
+  position: absolute;
+  color: #c6a270;
+  pointer-events: none;
+  animation: bob 5s ease-in-out infinite;
+}
+.pink-spark-one {
+  left: 126px;
+  top: 18px;
+  font-size: 24px;
+}
+.pink-spark-two {
+  right: 35px;
+  top: 221px;
+  color: #b291be;
+  font-size: 25px;
+  animation-delay: -2s;
+}
+.pink-spark-three {
+  left: 29px;
+  top: 427px;
+  color: #a5b18b;
+  font-size: 30px;
+  animation-delay: -1s;
+}
+.hero-room-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: #8c5b6e;
+  margin-top: 18px;
+  padding: 8px 0;
+}
+.hero-room-link:hover {
+  color: #a65c78;
+}
+.little-strip {
+  background: #f7e9e4;
+  border-color: #ecd9d3;
+  color: #825f59;
+}
+.mood-section {
+  padding-bottom: 39px;
+}
+.rose {
+  background: #f8e3eb;
+}
+.peach {
+  background: #f9e9df;
+}
+.lavender {
+  background: #eee5f2;
+}
+.mint {
+  background: #e9efdf;
+}
+.mood-card {
+  border-radius: 20px;
+}
+.mood-card.selected {
+  border-color: #b87897;
+}
+.letters-section,
+.footer-bottom {
+  border-color: #ecd9dd;
+}
+.letter-card {
+  border-radius: 19px;
+}
+.game-card {
+  border-color: #e9d4d6;
+  border-radius: 23px;
+}
+.game-card-copy h3 {
+  color: #735158;
+}
+.catch-card .game-illustration {
+  background: #f7e0e8;
+}
+.find-card .game-illustration {
+  background: #eee4ef;
+}
+.find-card .game-illustration > .mochi {
+  width: 104px;
+  top: 5px;
+  transform: translateX(-50%) rotate(6deg);
+}
+.hc1,
+.hc2 {
+  height: 58px;
+  bottom: 29px;
+  background: #fffaf5;
+}
+.hidden-mochi {
+  width: 40px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+}
+.hidden-mochi > .mochi {
+  width: 24px;
+}
+.little-strip .hidden-mochi {
+  bottom: 5px;
+}
+.mochi-friend {
+  filter: none !important;
+}
+.pink-mochi .mochi__body-group {
+  transform-origin: 50% 90%;
+  transform-box: fill-box;
+  animation: plush-breathe 3.5s ease-in-out infinite;
+}
+.mochi__eyes {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: bunny-blink 6s ease-in-out infinite;
+}
+.mochi__ear {
+  transform-box: fill-box;
+  transform-origin: 50% 95%;
+}
+.mochi--blush .mochi__ear--left,
+.mochi--pet .mochi__ear--left {
+  animation: ear-wiggle 0.75s ease-in-out 3;
+}
+.mochi--blush .mochi__ear--right,
+.mochi--pet .mochi__ear--right {
+  animation: ear-wiggle 0.75s ease-in-out 0.12s 3 reverse;
+}
+.mochi--jump {
+  animation: bunny-hop 0.65s ease-in-out 3;
+  transform-origin: 50% 90%;
+}
+.mochi--dance {
+  animation: bunny-dance 0.65s ease-in-out infinite;
+  transform-origin: 50% 90%;
+}
+.mochi--hug .mochi__body-group {
+  animation: plush-hug 1.8s ease-in-out infinite;
+}
+.mochi--eating .mochi__mouth,
+.mochi--eating .mochi__body-group {
+  animation: bunny-nom 0.6s ease-in-out infinite;
+}
+.mochi__love-spark {
+  animation: love-spark 1.8s ease-in-out infinite;
+}
+.mochi__zzz {
+  animation: sleepy-letters 3s ease-in-out infinite;
+}
+.mochi__puff {
+  animation: angry-puff 0.8s ease-in-out 4;
+}
+.mochi--sad .mochi__ear--right,
+.mochi--stress .mochi__ear--right {
+  rotate: 8deg;
+}
+.mochi__accessory,
+.mochi__blush {
+  transition: opacity 0.25s;
+}
+.mochi-room {
+  padding: 13px 0 53px;
+  position: relative;
+}
+.mochi-room .section-title-row h2 {
+  font-size: 34px;
+}
+.mochi-room .section-title-row h2 em {
+  color: #a96d85;
+  font-weight: 400;
+  font-size: 25px;
+  margin-left: 8px;
+}
+.room-number {
+  color: #8c5d6d;
+  border: 1px solid #ead3db;
+  border-radius: 30px;
+  padding: 9px 13px;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  white-space: nowrap;
+  background: #fcf1f3;
+}
+.bedroom-shell {
+  display: grid;
+  grid-template-columns: 1fr 1.08fr;
+  background: #fffaf6;
+  border: 1px solid #e8cdd5;
+  border-radius: 29px;
+  overflow: hidden;
+  box-shadow: 0 12px 35px #c0879010;
+}
+.bedroom-stage {
+  position: relative;
+  min-height: 508px;
+  background: #fae8e4;
+  isolation: isolate;
+  overflow: hidden;
+  transition: background 0.8s;
+}
+.room-wallpaper {
+  position: absolute;
+  inset: 0 0 22%;
+  z-index: -1;
+  background-image:
+    linear-gradient(#fff6 1px, transparent 1px),
+    linear-gradient(90deg, #fff6 1px, transparent 1px);
+  background-size: 27px 27px;
+  opacity: 0.55;
+}
+.room-floor {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 22%;
+  background: #f0d7c6;
+  border-top: 6px solid #f8e4d5;
+  z-index: -1;
+}
+.room-floor:after {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 70px;
+  border: 1px dashed #dca4ab;
+  background: #f9e4e5;
+  border-radius: 50%;
+  left: 50%;
+  top: 13px;
+  transform: translateX(-50%);
+}
+.room-hello {
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  top: 22px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 13px;
+  color: #845761;
+  z-index: 2;
+}
+.room-speech {
+  position: absolute;
+  left: 50%;
+  top: 56px;
+  transform: translateX(-50%) rotate(-2deg);
+  width: min(300px, 75%);
+  background: #fffaf4;
+  border: 1px solid #e3c3bd;
+  border-radius: 18px 18px 18px 4px;
+  padding: 12px 16px;
+  font-size: 11px;
+  line-height: 1.8;
+  color: #785351;
+  z-index: 6;
+  box-shadow: 0 5px 0 #e5c6c644;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.room-speech > svg {
+  color: #b87c90;
+}
+.room-window {
+  position: absolute;
+  left: 33px;
+  top: 142px;
+  width: 94px;
+  height: 112px;
+  background: #f6dbda;
+  border: 6px solid #f5cec9;
+  border-radius: 49px 49px 5px 5px;
+  padding: 0;
+  box-shadow:
+    0 0 0 1px #dab1a8,
+    0 3px 0 #edc5be;
+  z-index: 2;
+  transition: transform 0.2s;
+}
+.room-window:hover {
+  transform: rotate(-3deg);
+}
+.window-sky {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 42px 42px 0 0;
+  background: linear-gradient(#f4ebd1, #fbebd8);
+  transition: background 0.8s;
+}
+.window-moon {
+  position: absolute;
+  top: 10px;
+  left: 14px;
+  font-size: 24px;
+  color: #c6a169;
+}
+.window-star {
+  position: absolute;
+  top: 20px;
+  right: 6px;
+  color: #c6a169;
+  font-size: 14px;
+}
+.window-cloud {
+  position: absolute;
+  background: #fffaf1;
+  border-radius: 50%;
+  width: 50px;
+  height: 21px;
+  left: 31px;
+  bottom: 16px;
+}
+.room-window > i {
+  position: absolute;
+  background: #f5cec9;
+  width: 5px;
+  top: 11px;
+  bottom: 0;
+  left: calc(50% - 2.5px);
+}
+.room-window > i:nth-of-type(2) {
+  width: 100%;
+  left: 0;
+  height: 5px;
+  top: 53%;
+  bottom: auto;
+}
+.window-sill {
+  position: absolute;
+  height: 9px;
+  background: #e6b3ad;
+  left: -12px;
+  right: -12px;
+  bottom: -10px;
+  border: 1px solid #d5a7a0;
+  border-radius: 5px;
+}
+.room-lamp {
+  position: absolute;
+  top: 177px;
+  right: 32px;
+  width: 65px;
+  height: 118px;
+  padding: 0;
+  border: 0;
+  background: none;
+  z-index: 2;
+}
+.lamp-shade {
+  position: absolute;
+  left: 1px;
+  top: 0;
+  width: 63px;
+  height: 40px;
+  background: linear-gradient(90deg, #e4adbe, #f6d7df, #e4adbe);
+  clip-path: polygon(20% 0, 80% 0, 100% 100%, 0 100%);
+  border-bottom: 3px solid #c791a2;
+  border-radius: 5px;
+}
+.lamp-stand {
+  position: absolute;
+  left: 30px;
+  width: 4px;
+  height: 66px;
+  background: #b68f7c;
+  top: 39px;
+  border-radius: 5px;
+}
+.lamp-stand:after {
+  content: "";
+  position: absolute;
+  left: -19px;
+  width: 43px;
+  height: 8px;
+  top: 61px;
+  background: #cf9f8b;
+  border-radius: 50%;
+}
+.lamp-pull {
+  position: absolute;
+  top: 39px;
+  right: 13px;
+  height: 25px;
+  border-left: 1px solid #b28e7d;
+  padding-top: 16px;
+  color: #a66e81;
+  font-size: 14px;
+}
+.lamp-glow {
+  position: absolute;
+  width: 127px;
+  height: 126px;
+  left: -29px;
+  top: -41px;
+  border-radius: 50%;
+  background: #fff4c788;
+  filter: blur(19px);
+  opacity: 0.6;
+}
+.room-flower {
+  position: absolute;
+  left: 49px;
+  bottom: 116px;
+  width: 48px;
+  height: 94px;
+}
+.room-flower > .daisy,
+.room-flower > svg {
+  position: absolute;
+  top: 0;
+  left: -4px;
+  width: 55px;
+  z-index: 2;
+}
+.room-flower > span {
+  position: absolute;
+  width: 24px;
+  height: 28px;
+  bottom: 0;
+  left: 11px;
+  border-radius: 4px 4px 8px 8px;
+  background: #c5cfb1;
+  border: 1px solid #a7b38f;
+}
+.room-flower > span:before {
+  content: "";
+  position: absolute;
+  bottom: 26px;
+  height: 28px;
+  left: 10px;
+  width: 2px;
+  background: #9eae86;
+}
+.mochi-bed {
+  position: absolute;
+  width: 253px;
+  height: 62px;
+  left: 50%;
+  bottom: 84px;
+  transform: translateX(-50%);
+  background: #efd2c9;
+  border: 2px solid #dab2a7;
+  border-radius: 18px 18px 9px 9px;
+  z-index: 3;
+  box-shadow: 0 5px 0 #cdaa9780;
+}
+.bed-pillow {
+  position: absolute;
+  right: 13px;
+  top: -29px;
+  width: 94px;
+  height: 37px;
+  background: #fff3ee;
+  border: 1px solid #e4bfc2;
+  border-radius: 14px;
+  transform: rotate(7deg);
+  text-align: center;
+  line-height: 35px;
+  color: #c58c9b;
+  font-size: 22px;
+}
+.bed-quilt {
+  position: absolute;
+  left: -3px;
+  right: -3px;
+  top: 7px;
+  bottom: 0;
+  border-radius: 12px 12px 6px 6px;
+  background: #e7b7c4;
+  background-image:
+    linear-gradient(#fff3 1px, transparent 1px),
+    linear-gradient(90deg, #fff3 1px, transparent 1px);
+  background-size: 21px 21px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: #fff5ef;
+  font-size: 21px;
+  border-bottom: 5px solid #d89fae;
+}
+.bed-feet:before,
+.bed-feet:after {
+  content: "";
+  position: absolute;
+  top: 58px;
+  width: 9px;
+  height: 24px;
+  border-radius: 0 0 4px 4px;
+  background: #cda78e;
+}
+.bed-feet:before {
+  left: 13px;
+}
+.bed-feet:after {
+  right: 13px;
+}
+.room-mochi {
+  position: absolute;
+  z-index: 4;
+  width: 230px;
+  left: 50%;
+  bottom: 119px;
+  transform: translateX(-50%);
+  border: 0;
+  background: none;
+  padding: 0;
+  filter: drop-shadow(0 10px 10px #956a6a16);
+  transition: filter 0.2s;
+}
+.room-mochi:hover {
+  filter: drop-shadow(0 12px 15px #aa77852a);
+}
+.room-mochi:active {
+  transform: translateX(-50%) scale(0.97);
+}
+.floating-snack {
+  position: absolute;
+  font-size: 35px;
+  top: 56%;
+  right: 2%;
+  filter: drop-shadow(0 2px 2px #b2886a33);
+  animation: snack-nom 1.2s ease-in-out infinite;
+  pointer-events: none;
+}
+.room-pet-hint {
+  position: absolute;
+  bottom: 47px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 12px;
+  color: #795057;
+  z-index: 5;
+}
+.room-caption {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: 14px;
+  text-align: center;
+  color: #7b514c;
+  font-size: 9px;
+  line-height: 1.5;
+  z-index: 5;
+}
+.bedroom-controls {
+  padding: 25px 27px 22px;
+  border-left: 1px solid #e8cdd5;
+  background: #fff9f7;
+}
+.room-status-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 17px;
+  font-size: 9px;
+  color: #886474;
+}
+.room-status-bar > span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.room-status-bar i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #899971;
+  box-shadow: 0 0 0 3px #e7eddc;
+}
+.room-status-bar i.sleeping-dot {
+  background: #a88cae;
+  box-shadow: 0 0 0 3px #ede4f0;
+}
+.closet-shortcut {
+  border: 0;
+  background: none;
+  font-size: 9px;
+  color: #89596c;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 7px 0;
+  min-height: 32px;
+}
+.room-tabs {
+  display: flex;
+  gap: 3px;
+  padding: 4px;
+  background: #f5e6eb;
+  border-radius: 12px;
+}
+.room-tabs > button {
+  flex: 1;
+  min-height: 43px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: #885c6e;
+  font-size: 10px;
+  font-weight: 550;
+  white-space: nowrap;
+  padding: 9px 7px;
+  transition:
+    background 0.2s,
+    box-shadow 0.2s;
+}
+.room-tabs > button[aria-selected="true"] {
+  background: #fffaf6;
+  color: #935370;
+  box-shadow: 0 2px 5px #a1757e12;
+}
+.room-tabs > button:hover {
+  background: #fff7f2aa;
+}
+.room-panel {
+  padding-top: 22px;
+  min-height: 385px;
+}
+.room-panel:focus-visible {
+  outline: 2px solid #c38ba3;
+  outline-offset: 8px;
+  border-radius: 8px;
+}
+.room-panel-title .eyebrow {
+  font-size: 8px;
+  letter-spacing: 1.4px;
+  color: #915f74;
+}
+.room-panel-title h3 {
+  font-family: var(--serif);
+  font-size: 27px;
+  font-weight: 450;
+  letter-spacing: -0.7px;
+  margin: 6px 0 7px;
+  color: #765058;
+}
+.room-panel-title p {
+  font-size: 10px;
+  color: #805f61;
+  line-height: 1.8;
+}
+.care-actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 9px;
+  margin-top: 20px;
+}
+.care-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 1px solid #e8cad3;
+  border-radius: 12px;
+  min-height: 47px;
+  padding: 8px 6px;
+  background: #f9e6ed;
+  color: #87536b;
+  font-size: 10px;
+  transition:
+    translate 0.2s,
+    background 0.2s;
+}
+.care-action:hover {
+  translate: 0 -3px;
+  background: #f5dce7;
+}
+.care-action:active {
+  translate: 0 1px;
+}
+.action-sleep {
+  background: #ece4f1;
+  border-color: #dcd0e6;
+  color: #72567f;
+}
+.action-talk {
+  background: #f6edd7;
+  border-color: #e4d9b8;
+  color: #7e653c;
+}
+.action-dance {
+  background: #eaf0e3;
+  border-color: #d6dfcc;
+  color: #5d6d49;
+}
+.care-action:disabled,
+.snack-tray button:disabled {
+  opacity: 0.45;
+  translate: none;
+}
+.snack-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  margin: 22px 0 10px;
+}
+.snack-heading > span {
+  font-size: 8px;
+  font-weight: 550;
+  letter-spacing: 1.4px;
+  color: #835d61;
+}
+.snack-heading small {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 11px;
+  color: #93656a;
+}
+.snack-tray {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+.snack-tray button {
+  border: 1px dashed #e0c2bd;
+  background: #fcf1e8;
+  border-radius: 12px;
+  padding: 10px 5px 9px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  color: #855c58;
+  transition:
+    transform 0.2s,
+    background 0.2s;
+  min-height: 74px;
+}
+.snack-tray button > span {
+  font-size: 26px;
+}
+.snack-tray button > small {
+  font-size: 8px;
+}
+.snack-tray button:hover {
+  transform: rotate(-3deg);
+  background: #fae6da;
+}
+.love-meter {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 22px;
+  font-size: 8px;
+  color: #925f73;
+}
+.love-meter > span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+}
+.love-meter > div {
+  background: #f2dde4;
+  height: 5px;
+  border-radius: 5px;
+  flex: 1;
+  overflow: hidden;
+}
+.love-meter > div i {
+  display: block;
+  height: 100%;
+  background: #be7d97;
+  border-radius: 5px;
+  transition: width 0.35s;
+}
+.love-meter > b {
+  font-size: 8px;
+  font-weight: 500;
+  min-width: 31px;
+}
+.room-fineprint {
+  display: block;
+  text-align: center;
+  font-size: 8px !important;
+  line-height: 1.8;
+  color: #8b6570 !important;
+  margin-top: 14px;
+}
+.accessory-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-top: 15px;
+}
+.accessory-card {
+  border: 1px solid #e8d1d7;
+  background: #fff4f2;
+  border-radius: 12px;
+  position: relative;
+  padding: 8px 5px 10px;
+  text-align: center;
+  color: #80565f;
+  min-height: 139px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition:
+    transform 0.2s,
+    border-color 0.2s,
+    background 0.2s;
+}
+.accessory-card > .mochi {
+  width: 58px;
+  height: 75px;
+  flex-shrink: 0;
+}
+.accessory-card > b {
+  font-size: 9px;
+  font-weight: 550;
+  margin-top: 5px;
+  line-height: 1.5;
+}
+.accessory-card > small {
+  font-size: 7px;
+  line-height: 1.65;
+  margin-top: 3px;
+  max-width: 94%;
+}
+.accessory-card:disabled {
+  background: #f5eeeb;
+  color: #87726c;
+}
+.accessory-card:disabled > .mochi {
+  opacity: 0.52;
+}
+.accessory-card.wearing {
+  border-color: #b57b92;
+  background: #f9e5ed;
+  box-shadow: 0 0 0 2px #cf9aab13;
+}
+.accessory-card:not(:disabled):hover {
+  transform: translateY(-4px);
+  border-color: #c58aa1;
+}
+.accessory-check,
+.accessory-lock {
+  position: absolute;
+  right: 6px;
+  top: 6px;
+  color: #a16881;
+}
+.care-stamps {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 7px;
+  margin-top: 20px;
+}
+.care-stamps > div {
+  position: relative;
+  border: 1px dashed #e5ced1;
+  border-radius: 12px;
+  background: #f7edea;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 63px;
+  color: #795f5b;
+}
+.care-stamps > div > span {
+  font-size: 8px;
+}
+.care-stamps > div > svg:last-child:not(:first-child) {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+.care-stamps > div.stamped {
+  background: #f7e3eb;
+  border-color: #ce9bb0;
+  color: #8b526e;
+  border-style: solid;
+}
+.radli-drawer {
+  position: relative;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 17px 14px;
+  margin-top: 18px;
+  background: #f7eedf;
+  border: 1px solid #e1ccb6;
+  border-radius: 14px;
+}
+.drawer-heart {
+  font-size: 34px;
+  color: #b3847a;
+  flex-shrink: 0;
+}
+.radli-drawer .eyebrow {
+  font-size: 6px;
+  letter-spacing: 1.1px;
+  color: #80614e;
+}
+.radli-drawer h4 {
+  margin: 5px 0 7px;
+  font-family: var(--serif);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: #7e544d;
+}
+.radli-drawer p {
+  font-size: 8px;
+  color: #7b604b;
+  line-height: 1.8;
+}
+.drawer-button {
+  border: 1px solid #d5b9ac;
+  border-radius: 50%;
+  background: #fff7ef;
+  color: #9b6b6b;
+  width: 39px;
+  height: 39px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  margin-left: auto;
+}
+.drawer-button:disabled {
+  opacity: 0.55;
+}
+.unsealed {
+  background: #f9e5ea;
+  border-color: #d69dae;
+}
+.unsealed .drawer-button {
+  background: #b76f8c;
+  border-color: #b76f8c;
+  color: #fff8f0;
+}
+.scrapbook-stats {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+  padding: 17px 0 12px;
+  margin-top: 7px;
+  border-bottom: 1px solid #ead9d8;
+  color: #875c69;
+  font-size: 8px;
+}
+.scrapbook-stats b {
+  font-family: var(--serif);
+  font-size: 19px;
+  font-weight: 450;
+  display: block;
+  margin-bottom: 4px;
+  text-align: center;
+}
+.secret-stamps {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 9px;
+  margin-top: 16px;
+}
+.secret-stamps > span {
+  height: 21px;
+  width: 21px;
+  background: #f1e6e6;
+  color: #8c6e74;
+  border: 1px dashed #d6bcc4;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+}
+.secret-stamps > .secret-found {
+  border-style: solid;
+  background: #f8e1eb;
+  color: #9e607e;
+}
+.mochi-unlock-toast {
+  position: absolute;
+  z-index: 9;
+  bottom: 31px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fffaf4ee;
+  backdrop-filter: blur(12px);
+  border: 1px solid #dca9bc;
+  border-radius: 14px;
+  box-shadow: 0 5px 20px #ac778622;
+  color: #86566c;
+  font-size: 10px;
+  line-height: 1.7;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 11px 10px 17px;
+  max-width: calc(100% - 16px);
+  width: max-content;
+}
+.mochi-unlock-toast button {
+  border: 0;
+  width: 35px;
+  height: 35px;
+  background: #f7e4eb;
+  color: #966179;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+.room-night .bedroom-stage {
+  background: #d5c0d7;
+}
+.room-night .room-wallpaper {
+  opacity: 0.23;
+}
+.room-night .room-floor {
+  background: #baa4bb;
+  border-color: #e0c8d4;
+}
+.room-night .room-floor:after {
+  background: #dcbacb;
+  border-color: #b885a4;
+}
+.room-night .window-sky {
+  background: linear-gradient(#696280, #9689a3);
+}
+.room-night .window-moon,
+.room-night .window-star {
+  color: #f1dfbc;
+}
+.room-night .window-cloud {
+  opacity: 0.25;
+}
+.room-night .lamp-glow {
+  opacity: 0;
+}
+.room-night .room-hello,
+.room-night .room-caption,
+.room-night .room-pet-hint {
+  color: #4b304b;
+}
+.catch-extras {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 8px;
+  color: #885970;
+  margin: 0 0 12px;
+  line-height: 1.6;
+}
+.catch-extras .text-button {
+  font-size: 8px;
+  padding: 3px 0;
+  min-height: 27px;
+}
+.catch-combo {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 10px;
+}
+.catch-board.paused .falling-heart {
+  animation-play-state: paused;
+}
+.pause-overlay {
+  background: #f8e8efd9;
+  backdrop-filter: blur(4px);
+}
+.pause-overlay > .mochi {
+  width: 100px;
+}
+.pause-overlay > h3 {
+  font-family: var(--serif);
+  font-size: 23px;
+  font-weight: 450;
+  color: #8e6480;
+}
+.pause-overlay > p {
+  font-size: 11px;
+  margin: 10px 0 17px;
+}
+.find-content > .mochi {
+  width: 125px;
+}
+.bubble-result > .mochi {
+  width: 113px;
+}
+.hunt-progress > .mochi {
+  width: 35px;
+}
+.final-hug > .mochi {
+  width: 105px;
+  left: 5px;
+}
+.final-hug > .mochi-friend {
+  left: 103px;
+}
+.final-hug.hugging > .mochi {
+  left: 23px;
+}
+.final-hug.hugging > .mochi-friend {
+  left: 82px;
+}
+.hug-art > .mochi {
+  width: 96px;
+  left: 1px;
+}
+.hug-art > .mochi-friend {
+  left: 78px;
+}
+.hidden-ending-modal {
+  width: min(600px, 100%);
+  background: #fff9f3;
+  padding: 38px 44px;
+}
+.pink-ending {
+  text-align: center;
+}
+.pink-ending .eyebrow {
+  color: #98607b;
+  font-size: 8px;
+}
+.ending-garden {
+  height: 198px;
+  position: relative;
+  background: radial-gradient(ellipse at 50% 70%, #f7e3db, transparent 65%);
+  margin: 14px auto 8px;
+  max-width: 285px;
+}
+.ending-garden > .mochi {
+  width: 153px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.ending-garden > svg:not(.mochi) {
+  width: 48px;
+  position: absolute;
+  left: 31px;
+  bottom: 19px;
+  transform: rotate(-13deg);
+}
+.ending-garden > span {
+  position: absolute;
+  top: 30px;
+  left: 40px;
+  color: #c3a575;
+  font-size: 26px;
+}
+.ending-garden > span:last-child {
+  left: auto;
+  right: 31px;
+  top: 91px;
+  color: #bd7e98;
+}
+.pink-ending h2 {
+  font-size: 34px;
+  color: #805061;
+}
+.pink-ending h2 em {
+  color: #b67690;
+  font-weight: 400;
+}
+.pink-ending .ending-letter {
+  text-align: left;
+  color: #80575b;
+  font-size: 13px;
+  line-height: 2;
+  padding: 19px 0 11px;
+  white-space: pre-line;
+}
+.ending-hug-pair {
+  position: relative;
+  height: 145px;
+  width: 210px;
+  margin: 15px auto 12px;
+}
+.ending-hug-pair > .mochi {
+  width: 115px;
+  position: absolute;
+  left: -7px;
+  transition: translate 0.8s;
+  rotate: -7deg;
+}
+.ending-hug-pair > .mochi:last-child {
+  left: 99px;
+  rotate: 7deg;
+}
+.ending-hug-pair.together > .mochi {
+  translate: 16px 0;
+}
+.ending-hug-pair.together > .mochi:last-child {
+  translate: -16px 0;
+}
+.pink-ending .ending-response {
+  font-size: 10px;
+  color: #8f6375;
+  margin-top: 14px;
+  min-height: 25px;
+}
+.pink-ending > .text-button {
+  margin-top: 8px;
+  color: #8f6272;
+}
+@keyframes plush-breathe {
+  0%,
+  100% {
+    scale: 1 1;
+  }
+  50% {
+    scale: 1.008 0.99;
+  }
+}
+@keyframes bunny-blink {
+  0%,
+  42%,
+  46%,
+  94%,
+  98%,
+  100% {
+    scale: 1 1;
+  }
+  44%,
+  96% {
+    scale: 1 0.1;
+  }
+}
+@keyframes ear-wiggle {
+  0%,
+  100% {
+    rotate: 0;
+  }
+  35% {
+    rotate: -9deg;
+  }
+  70% {
+    rotate: 7deg;
+  }
+}
+@keyframes bunny-hop {
+  0%,
+  100% {
+    translate: 0 0;
+    scale: 1 1;
+  }
+  35% {
+    translate: 0 -12px;
+    scale: 0.99 1.025;
+  }
+  75% {
+    translate: 0 2px;
+    scale: 1.025 0.99;
+  }
+}
+@keyframes bunny-dance {
+  0%,
+  100% {
+    rotate: -6deg;
+    translate: 0 0;
+  }
+  50% {
+    rotate: 6deg;
+    translate: 0 -7px;
+  }
+}
+@keyframes plush-hug {
+  0%,
+  100% {
+    scale: 1 1;
+  }
+  50% {
+    scale: 1.025 0.99;
+  }
+}
+@keyframes bunny-nom {
+  0%,
+  100% {
+    scale: 1 1;
+  }
+  50% {
+    scale: 1.012 0.99;
+  }
+}
+@keyframes love-spark {
+  0%,
+  100% {
+    opacity: 0.5;
+    translate: 0 0;
+  }
+  50% {
+    opacity: 1;
+    translate: 0 -6px;
+  }
+}
+@keyframes sleepy-letters {
+  0%,
+  100% {
+    opacity: 0.4;
+    translate: 0 3px;
+  }
+  50% {
+    opacity: 1;
+    translate: 0 -4px;
+  }
+}
+@keyframes angry-puff {
+  0%,
+  100% {
+    translate: 0 0;
+    scale: 1;
+  }
+  50% {
+    translate: 3px -3px;
+    scale: 1.08;
+  }
+}
+@keyframes snack-nom {
+  0%,
+  100% {
+    translate: 0 0;
+    rotate: 8deg;
+  }
+  50% {
+    translate: -11px 0;
+    rotate: -7deg;
+  }
+}
+@media (min-width: 1440px) {
+  .hero {
+    min-height: 633px;
+    padding-top: 49px;
+    padding-bottom: 47px;
+  }
+  .hero-art {
+    scale: 1;
+  }
+  .hero h1 {
+    font-size: 65px;
+  }
+}
+@media (max-width: 1100px) {
+  .hero-art {
+    scale: 0.92;
+  }
+  .hero-mochi {
+    width: 318px;
+  }
+  .hero-art .pink-halo {
+    width: 375px;
+    height: 375px;
+    top: 60px;
+  }
+  .hero-art .art-orbit {
+    width: 413px;
+    height: 413px;
+    top: 42px;
+  }
+  .hero-art .art-note {
+    left: -16px;
+  }
+  .hero-art .art-speech {
+    right: -16px;
+  }
+  .bedroom-controls {
+    padding: 23px;
+  }
+  .room-tabs > button {
+    font-size: 9px;
+    gap: 5px;
+  }
+  .room-panel-title h3 {
+    font-size: 25px;
+  }
+  .care-actions {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .bedroom-stage {
+    min-height: 551px;
+  }
+  .room-mochi {
+    bottom: 117px;
+  }
+  .room-window {
+    left: 24px;
+    width: 80px;
+    height: 102px;
+    top: 169px;
+  }
+  .room-lamp {
+    right: 21px;
+    top: 199px;
+  }
+  .room-speech {
+    top: 58px;
+  }
+  .room-number {
+    font-size: 8px;
+  }
+  .accessory-card > small {
+    font-size: 7px;
+  }
+  .accessory-card {
+    min-height: 133px;
+  }
+}
+@media (max-width: 850px) {
+  .site-header nav {
+    gap: 16px;
+    font-size: 10px;
+  }
+  .hero h1 {
+    font-size: 47px;
+  }
+  .hero-art {
+    scale: 0.82;
+    margin-left: -20px;
+    margin-right: -18px;
+  }
+  .hero-mochi {
+    width: 314px;
+  }
+  .hero {
+    min-height: 535px;
+  }
+  .hero-art .art-speech {
+    top: 76px;
+    right: -30px;
+  }
+  .hero-art .art-note {
+    bottom: 59px;
+    left: -27px;
+    width: 140px;
+  }
+  .hero-art .meet-mochi {
+    right: -21px;
+  }
+  .hero-art .art-tag {
+    top: 432px;
+    font-size: 12px;
+  }
+  .hero-room-link {
+    font-size: 10px;
+  }
+  .mochi-room .section-title-row h2 {
+    font-size: 30px;
+  }
+  .mochi-room .section-title-row h2 em {
+    font-size: 22px;
+    display: block;
+    margin: 6px 0 0;
+  }
+  .bedroom-shell {
+    grid-template-columns: 1fr 1.15fr;
+  }
+  .bedroom-stage {
+    min-height: 560px;
+  }
+  .bedroom-controls {
+    padding: 20px 18px;
+  }
+  .room-tabs > button {
+    font-size: 8px;
+    gap: 4px;
+    padding: 8px 4px;
+  }
+  .room-tabs > button > svg {
+    width: 12px;
+  }
+  .room-status-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    margin-bottom: 10px;
+  }
+  .closet-shortcut {
+    min-height: 26px;
+    padding: 3px 0;
+  }
+  .room-mochi {
+    width: 202px;
+    bottom: 151px;
+  }
+  .room-window {
+    left: 21px;
+    width: 65px;
+    height: 92px;
+    top: 187px;
+  }
+  .room-lamp {
+    width: 53px;
+    scale: 0.85;
+    right: 9px;
+    top: 195px;
+  }
+  .room-speech {
+    top: 73px;
+    font-size: 10px;
+    width: 82%;
+  }
+  .mochi-bed {
+    width: 218px;
+    bottom: 117px;
+  }
+  .room-floor {
+    height: 26%;
+  }
+  .room-pet-hint {
+    bottom: 69px;
+    font-size: 11px;
+  }
+  .room-caption {
+    bottom: 22px;
+  }
+  .room-flower {
+    left: 23px;
+    bottom: 149px;
+    scale: 0.75;
+  }
+  .room-panel-title h3 {
+    font-size: 23px;
+  }
+  .care-action {
+    font-size: 9px;
+    min-height: 43px;
+  }
+  .snack-heading small {
+    font-size: 9px;
+  }
+  .love-meter {
+    font-size: 7px;
+    gap: 7px;
+  }
+  .love-meter > span {
+    font-size: 7px;
+  }
+  .accessory-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .accessory-card {
+    min-height: 127px;
+  }
+  .accessory-card > b {
+    font-size: 8px;
+  }
+  .room-number {
+    display: none;
+  }
+  .care-stamps {
+    gap: 5px;
+  }
+  .care-stamps > div > span {
+    font-size: 7px;
+  }
+  .radli-drawer {
+    gap: 8px;
+    padding: 13px 10px;
+  }
+  .drawer-heart {
+    display: none;
+  }
+  .radli-drawer h4 {
+    font-size: 15px;
+  }
+  .radli-drawer .eyebrow {
+    font-size: 5px;
+  }
+  .scrapbook-stats {
+    font-size: 7px;
+  }
+  .secret-stamps {
+    gap: 6px;
+  }
+}
+@media (max-width: 680px) {
+  .hero {
+    padding-top: 36px;
+    padding-bottom: 6px;
+    min-height: 0;
+  }
+  .hero h1 {
+    font-size: 46px;
+  }
+  .hero-art {
+    width: 338px;
+    max-width: calc(100vw - 24px);
+    height: 431px;
+    scale: 1;
+    margin: 20px auto 1px;
+    transform: none;
+  }
+  .hero-mochi {
+    width: 270px;
+    top: 31px;
+  }
+  .pink-halo {
+    width: 310px !important;
+    height: 310px !important;
+    top: 65px !important;
+  }
+  .hero-art .art-orbit {
+    width: 335px !important;
+    height: 335px !important;
+    top: 52px !important;
+  }
+  .hero-art .art-speech {
+    right: 0;
+    top: 17px;
+    font-size: 13px;
+    padding: 10px 14px;
+  }
+  .hero-art .art-daisy {
+    width: 52px;
+    left: 13px;
+    top: 51px;
+  }
+  .hero-art .heart-one {
+    left: 4px;
+    top: 194px;
+    font-size: 30px;
+  }
+  .hero-art .heart-two {
+    right: 2px;
+    top: 254px;
+    font-size: 32px;
+  }
+  .hero-art .art-sparkle {
+    right: 19px;
+    top: 105px;
+    font-size: 22px;
+  }
+  .pink-spark-one {
+    left: 115px;
+    top: 13px;
+    font-size: 17px;
+  }
+  .pink-spark-two {
+    right: 15px;
+    top: 360px;
+    font-size: 22px;
+  }
+  .pink-spark-three {
+    left: 15px;
+    top: 378px;
+    font-size: 22px;
+  }
+  .hero-art .art-tag {
+    top: 368px;
+    left: 50%;
+    padding: 8px 14px;
+    font-size: 12px;
+  }
+  .hero-art .art-note {
+    bottom: 68px;
+    left: -3px;
+    width: 130px;
+    padding: 16px 11px 13px;
+  }
+  .hero-art .art-note b {
+    font-size: 12px;
+  }
+  .hero-art .art-note small {
+    font-size: 6px;
+  }
+  .hero-art .art-note span {
+    font-size: 6px;
+  }
+  .hero-art .art-note svg {
+    width: 13px;
+  }
+  .hero-art .meet-mochi {
+    right: 13px;
+    bottom: 0;
+    font-size: 13px;
+  }
+  .hero-art .meet-mochi small {
+    font-size: 7px;
+  }
+  .hero-art .meet-mochi > svg {
+    width: 35px;
+    top: -27px;
+    right: 18px;
+  }
+  .hero-room-link {
+    font-size: 10px;
+    margin-top: 13px;
+    padding-bottom: 0;
+  }
+  .little-strip .hidden-mochi {
+    width: 30px;
+    height: 30px;
+    margin-left: -3px;
+  }
+  .little-strip .hidden-mochi > .mochi {
+    width: 21px;
+  }
+  .mood-section {
+    padding-top: 37px;
+    padding-bottom: 28px;
+  }
+  .mochi-room {
+    padding-top: 8px;
+    padding-bottom: 36px;
+  }
+  .mochi-room .section-title-row h2 {
+    font-size: 29px;
+  }
+  .mochi-room .section-title-row h2 em {
+    font-size: 21px;
+  }
+  .mochi-room .section-title-row p {
+    font-size: 11px;
+  }
+  .bedroom-shell {
+    grid-template-columns: 1fr;
+    border-radius: 22px;
+  }
+  .bedroom-stage {
+    min-height: 450px;
+  }
+  .room-hello {
+    top: 18px;
+    font-size: 12px;
+  }
+  .room-speech {
+    top: 48px;
+    font-size: 10px;
+    width: 80%;
+    padding: 11px 14px;
+    border-radius: 15px 15px 15px 3px;
+  }
+  .room-mochi {
+    width: 199px;
+    bottom: 109px;
+  }
+  .mochi-bed {
+    width: 231px;
+    bottom: 72px;
+    height: 56px;
+  }
+  .room-floor {
+    height: 23%;
+  }
+  .room-floor:after {
+    width: 278px;
+    height: 62px;
+    top: 14px;
+  }
+  .room-window {
+    left: 22px;
+    top: 125px;
+    width: 65px;
+    height: 91px;
+  }
+  .room-lamp {
+    top: 151px;
+    right: 18px;
+    scale: 0.8;
+  }
+  .room-flower {
+    left: 21px;
+    bottom: 108px;
+    scale: 0.7;
+  }
+  .room-pet-hint {
+    bottom: 40px;
+    font-size: 10px;
+  }
+  .room-caption {
+    bottom: 12px;
+    font-size: 8px;
+    left: 19px;
+    right: 19px;
+  }
+  .bedroom-controls {
+    padding: 23px 20px 21px;
+    border-left: 0;
+    border-top: 1px solid #e8cdd5;
+  }
+  .room-status-bar {
+    flex-direction: row;
+    align-items: center;
+    font-size: 8px;
+    gap: 7px;
+    margin-bottom: 16px;
+  }
+  .closet-shortcut {
+    font-size: 7px;
+    white-space: nowrap;
+  }
+  .room-tabs {
+    padding: 3px;
+    gap: 2px;
+  }
+  .room-tabs > button {
+    font-size: 8px;
+    min-height: 42px;
+    gap: 5px;
+    padding: 8px 4px;
+  }
+  .room-panel {
+    padding-top: 21px;
+    min-height: 405px;
+  }
+  .room-panel-title h3 {
+    font-size: 26px;
+  }
+  .room-panel-title p {
+    font-size: 11px;
+  }
+  .room-panel-title .eyebrow {
+    font-size: 7px;
+  }
+  .care-actions {
+    margin-top: 18px;
+    gap: 9px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .care-action {
+    font-size: 10px;
+    min-height: 47px;
+    gap: 8px;
+  }
+  .snack-heading {
+    margin-top: 21px;
+  }
+  .snack-heading small {
+    font-size: 10px;
+  }
+  .snack-heading > span {
+    font-size: 7px;
+  }
+  .snack-tray {
+    gap: 7px;
+  }
+  .snack-tray button {
+    min-height: 76px;
+  }
+  .snack-tray button > small {
+    font-size: 7px;
+  }
+  .love-meter {
+    font-size: 7px;
+    gap: 8px;
+    margin-top: 20px;
+  }
+  .love-meter > span {
+    font-size: 7px;
+  }
+  .love-meter > span > svg {
+    width: 10px;
+  }
+  .room-fineprint {
+    font-size: 7px !important;
+  }
+  .accessory-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 7px;
+  }
+  .accessory-card {
+    min-height: 131px;
+    padding: 8px 4px 10px;
+  }
+  .accessory-card > .mochi {
+    width: 53px;
+    height: 68px;
+  }
+  .accessory-card > b {
+    font-size: 8px;
+  }
+  .accessory-card > small {
+    font-size: 6px;
+    line-height: 1.8;
+  }
+  .care-stamps {
+    gap: 6px;
+    margin-top: 18px;
+  }
+  .care-stamps > div {
+    min-height: 59px;
+    border-radius: 10px;
+  }
+  .care-stamps > div > span {
+    font-size: 7px;
+  }
+  .radli-drawer {
+    gap: 10px;
+    padding: 16px 12px;
+  }
+  .radli-drawer .eyebrow {
+    font-size: 5px;
+  }
+  .radli-drawer h4 {
+    font-size: 17px;
+  }
+  .radli-drawer p {
+    font-size: 8px;
+  }
+  .drawer-button {
+    width: 35px;
+    height: 35px;
+  }
+  .scrapbook-stats {
+    font-size: 7px;
+  }
+  .secret-stamps {
+    gap: 8px;
+  }
+  .mochi-unlock-toast {
+    bottom: 16px;
+    font-size: 9px;
+    padding: 8px 8px 8px 13px;
+    gap: 7px;
+  }
+  .find-card .game-illustration > .mochi {
+    width: 106px;
+    top: 26px;
+  }
+  .catch-extras {
+    font-size: 7px;
+    flex-wrap: wrap;
+    row-gap: 5px;
+  }
+  .catch-combo {
+    font-size: 9px;
+  }
+  .find-content > .mochi {
+    width: 108px;
+  }
+  .hug-art > .mochi {
+    width: 84px;
+  }
+  .hug-art > .mochi-friend {
+    left: 73px;
+  }
+  .final-hug > .mochi {
+    width: 105px;
+  }
+  .hidden-ending-modal {
+    padding: 36px 25px 25px;
+  }
+  .pink-ending h2 {
+    font-size: 30px;
+  }
+  .ending-garden {
+    height: 179px;
+  }
+  .ending-garden > .mochi {
+    width: 139px;
+  }
+  .pink-ending .ending-letter {
+    font-size: 12px;
+    line-height: 2;
+  }
+  .pink-ending .ending-response {
+    font-size: 9px;
+  }
+}
+@media (max-width: 365px) {
+  .hero h1 {
+    font-size: 42px;
+  }
+  .hero-art {
+    width: 300px;
+    height: 414px;
+  }
+  .hero-mochi {
+    width: 254px;
+    top: 31px;
+  }
+  .pink-halo {
+    width: 283px !important;
+    height: 283px !important;
+    top: 71px !important;
+  }
+  .hero-art .art-orbit {
+    width: 301px !important;
+    height: 301px !important;
+    top: 62px !important;
+  }
+  .hero-art .art-speech {
+    font-size: 12px;
+    right: -3px;
+    top: 17px;
+  }
+  .hero-art .art-daisy {
+    left: 4px;
+    width: 47px;
+  }
+  .hero-art .art-note {
+    width: 116px;
+    bottom: 61px;
+    left: -6px;
+  }
+  .hero-art .art-note b {
+    font-size: 11px;
+  }
+  .hero-art .art-tag {
+    top: 351px;
+  }
+  .hero-art .heart-one {
+    left: 0;
+    font-size: 24px;
+  }
+  .hero-art .heart-two {
+    right: -2px;
+    font-size: 25px;
+  }
+  .pink-spark-three {
+    top: 369px;
+  }
+  .hero-art .meet-mochi {
+    font-size: 12px;
+    right: 6px;
+  }
+  .room-speech {
+    font-size: 9px;
+  }
+  .bedroom-controls {
+    padding: 22px 16px;
+  }
+  .room-status-bar {
+    gap: 5px;
+  }
+  .room-status-bar > span {
+    font-size: 7px;
+  }
+  .room-tabs > button {
+    font-size: 7px;
+    gap: 4px;
+  }
+  .room-tabs > button > svg {
+    width: 11px;
+  }
+  .room-panel-title h3 {
+    font-size: 24px;
+  }
+  .room-panel-title p {
+    font-size: 10px;
+  }
+  .accessory-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .accessory-card {
+    min-height: 133px;
+  }
+  .accessory-card > b {
+    font-size: 9px;
+  }
+  .accessory-card > small {
+    font-size: 7px;
+  }
+  .room-mochi {
+    width: 190px;
+  }
+  .room-window {
+    left: 17px;
+    width: 61px;
+  }
+  .room-lamp {
+    right: 11px;
+  }
+  .mochi-bed {
+    width: 218px;
+  }
+  .room-flower {
+    left: 12px;
+  }
+  .snack-heading small {
+    font-size: 9px;
+  }
+  .radli-drawer h4 {
+    font-size: 15px;
+  }
+  .secret-stamps {
+    gap: 6px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mochi__body-group,
+  .mochi__eyes,
+  .mochi__ear,
+  .mochi__love-spark,
+  .mochi__zzz,
+  .mochi__puff,
+  .mochi--jump,
+  .mochi--dance,
+  .mochi--eating,
+  .floating-snack {
+    animation: none !important;
+  }
+  .mochi__eyes {
+    scale: 1;
+  }
+  .mochi__zzz,
+  .mochi__love-spark {
+    opacity: 0.8;
+  }
+  .ending-hug-pair > .mochi {
+    transition: none;
+  }
+}
+
+/* Static closet thumbnails keep mobile rendering light. */
+.accessory-card .mochi__body-group,
+.accessory-card .mochi__eyes {
+  animation: none;
+}
+
+/* Unlock instructions stay readable on small phones. */
+@media (max-width: 680px) {
+  .accessory-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 9px;
+  }
+  .accessory-card {
+    min-height: 143px;
+    padding: 9px 6px 11px;
+  }
+  .accessory-card > .mochi {
+    width: 59px;
+    height: 76px;
+  }
+  .accessory-card > b {
+    font-size: 10px;
+  }
+  .accessory-card > small {
+    font-size: 8px;
+    line-height: 1.7;
+  }
+}
