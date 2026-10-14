@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "build:pages": "tsc -b && vite build --base=/surprise-for-maybe/ --outDir=dist-pages",
     "preview": "vite preview --host 0.0.0.0",
-    "test": "npm run build && playwright test"
+    "test": "npm run build && npm run build:pages && playwright test"
   },
   "dependencies": {
     "@fontsource-variable/dm-sans": "^5.2.8",

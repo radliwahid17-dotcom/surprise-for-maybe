@@ -2,6 +2,7 @@ import { useEffect, useRef, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { motion, useReducedMotion } from "motion/react";
 import { X } from "lucide-react";
+import { useUniverse } from "./universe/Universe";
 
 export default function Modal({
   children,
@@ -15,7 +16,9 @@ export default function Modal({
   titleId?: string;
 }) {
   const dialog = useRef<HTMLDivElement>(null);
-  const reduceMotion = useReducedMotion();
+  const systemReduceMotion = useReducedMotion();
+  const { progress } = useUniverse();
+  const reduceMotion = systemReduceMotion || !progress.effects;
   const close = useRef(onClose);
   close.current = onClose;
   useEffect(() => {
@@ -35,7 +38,7 @@ export default function Modal({
       if (event.key !== "Tab") return;
       const elements = [
         ...(dialog.current?.querySelectorAll<HTMLElement>(
-          'button:not(:disabled), [href], input, [tabindex="0"]',
+          'button:not(:disabled), [href], input:not(:disabled), select:not(:disabled), textarea:not(:disabled), [tabindex="0"]',
         ) ?? []),
       ].filter((el) => el.getClientRects().length);
       const first = elements[0];

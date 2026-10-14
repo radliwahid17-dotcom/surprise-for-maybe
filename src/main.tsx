@@ -2,14 +2,18 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import { CompanionProvider } from "./Companion";
+import { UniverseProvider } from "./universe/Universe";
 import "./styles.css";
 import "./pink-world.css";
+import "./universe/world.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <CompanionProvider>
-      <App />
-    </CompanionProvider>
+    <UniverseProvider>
+      <CompanionProvider>
+        <App />
+      </CompanionProvider>
+    </UniverseProvider>
   </React.StrictMode>,
 );
 

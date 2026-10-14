@@ -1,4 +1,4 @@
-import { useId } from "react";
+import { memo, useId } from "react";
 import type { Accessory } from "./mochi-data";
 
 export type PinkMochiProps = {
@@ -202,7 +202,7 @@ function Outfit({ accessory }: { accessory: Accessory }) {
 }
 
 /** The proportions and palette here reproduce design-reference/PINK_MOCHI_DESIGN.md. */
-export function PinkMochi({
+function PinkMochiView({
   className = "",
   expression = "happy",
   superhero = false,
@@ -212,8 +212,17 @@ export function PinkMochi({
   const cream = `mochi-cream-${uid}`;
   const silhouette = `mochi-body-${uid}`;
   const sleeping = expression === "sleeping" || expression === "tired";
-  const cuddly = ["blush", "hug", "love", "pet"].includes(expression);
-  const worried = expression === "sad" || expression === "stress";
+  const cuddly = [
+    "blush",
+    "hug",
+    "love",
+    "pet",
+    "kiss",
+    "celebrate",
+    "hide",
+  ].includes(expression);
+  const worried =
+    expression === "sad" || expression === "stress" || expression === "cry";
   const confused = expression === "confused" || expression === "mixed";
   return (
     <svg
@@ -336,7 +345,16 @@ export function PinkMochi({
             fill="none"
           />
         )}
-        {expression === "eating" ? (
+        {expression === "kiss" ? (
+          <path
+            className="mochi__kiss-mouth"
+            d="M158 267Q177 267 164 274Q181 283 157 283"
+            fill="none"
+            stroke="#694d49"
+            strokeWidth="3"
+            strokeLinecap="round"
+          />
+        ) : expression === "eating" ? (
           <>
             <ellipse cx="165" cy="274" rx="11" ry="9" fill="#bd7e82" />
             <path
@@ -424,6 +442,32 @@ export function PinkMochi({
           ?
         </text>
       )}
+      {expression === "cry" && (
+        <g className="mochi__dramatic-tears" fill="#a9d5e6" opacity=".8">
+          <path d="M89 254Q70 276 81 292Q97 305 101 283Z" />
+          <path d="M244 254Q262 276 252 292Q235 305 232 283Z" />
+        </g>
+      )}
+      {expression === "kiss" && (
+        <g className="mochi__kiss-heart" fill="#d69bad">
+          <path d="M276 242C263 226 247 244 276 264C305 244 290 226 276 242Z" />
+          <path
+            d="M304 211C295 198 282 212 304 227C326 212 313 198 304 211Z"
+            opacity=".6"
+          />
+        </g>
+      )}
+      {expression === "celebrate" && (
+        <g className="mochi__party" strokeWidth="4" strokeLinecap="round">
+          <path d="M20 130L27 142M310 117L303 130" stroke="#d89db3" />
+          <path d="M13 191L24 184M313 180L321 189" stroke="#b3c89d" />
+          <path d="M39 95L44 107M285 78L282 94" stroke="#c0abd5" />
+          <circle cx="20" cy="163" r="5" fill="#e8ca85" />
+          <circle cx="305" cy="148" r="5" fill="#e8ca85" />
+        </g>
+      )}
     </svg>
   );
 }
+
+export const PinkMochi = memo(PinkMochiView);

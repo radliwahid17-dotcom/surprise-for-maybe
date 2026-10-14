@@ -18,6 +18,16 @@ Kamar Mochi menyediakan elus, peluk, camilan, tidur/bangun, dance, gelitik, dan 
 
 [Bukti visual dan catatan verifikasi](design-reference/verification/README.md) mencakup perbandingan referensi asli dengan SVG, desktop, tampilan mobile, kamar, closet, dan ending.
 
+## MAYBEVERSE 2.0
+
+Portal pembuka mengenali Maybe sebelum membuka halaman utama. Pink Mochi tetap kelinci asli, dengan reaksi elus yang berbeda, kiss, spin, hide, celebrate, tangisan dramatis, dan tidur setelah 90 detik tanpa interaksi. Menyentuh Mochi membangunkannya; menu efek memungkinkan suasana tenang.
+
+Lingkungan eksplorasi menambahkan mesin peluk dengan tiga ukuran, **60 fortune cookie**, taman yang dapat ditanam/disiram/diberi nama, moonflower pada kunjungan ketiga, kapsul hadiah gratis, **24 stiker SVG original**, Make Mochi Happy, rasi bintang **MAYBE**, **30 catatan botol Radli**, dan **40 popup** dengan enam tampilan. Popup otomatis dibatasi satu per kunjungan setelah jeda 75 detik, hanya saat tidak ada modal lain, dan dapat dimatikan.
+
+Catch the Love kini punya tiga level ringan, combo, personal best, dan pesan kemenangan. Bubble game punya pujian acak dan tombol POP EVERYTHING. Keenam mood tetap memakai pesan asli, dengan kegiatan sederhana tambahan. Album memuat **22 Easter eggs** beserta petunjuk opsional. Tujuh bintang dari tujuh pengalaman membuka chapter rahasia yang dapat dibaca ulang; kedua ending sebelumnya tetap tersedia.
+
+Pesan dan dialog harian mengikuti tanggal lokal. Seluruh progres disimpan di key baru `maybeverse:universe-v2`; key mood, sound, penemuan, pencarian Mochi, dan profil lama dipertahankan. Tidak ada pembayaran, login, backend, kunjungan harian wajib, atau tanaman yang mati karena ditinggal.
+
 ## Unduh website
 
 - [Unduh ZIP produksi siap upload ke hosting](https://github.com/radliwahid17-dotcom/surprise-for-maybe/raw/refs/heads/main/downloads/maybeverse-production.zip) — tidak perlu menjalankan build sendiri.
@@ -39,10 +49,12 @@ Di lingkungan cloud dengan cache home yang tidak writable, gunakan `npm ci --cac
 ```sh
 npm run build       # TypeScript + build production di dist/
 npm run preview     # Melihat build production
-npm test            # Build + pengujian browser nyata
+npm test            # Kedua build production + pengujian browser nyata
 ```
 
-Pengujian memakai Chromium sistem jika ada `/usr/bin/chromium`. Di mesin lain jalankan `npx playwright install chromium`, atau tentukan path melalui `PLAYWRIGHT_CHROMIUM_EXECUTABLE`. Sebanyak 45 tes mencakup welcome, 6 mood, 7 surat, 32 kejutan, 60 pengingat, semua mini game, Easter Egg, kamar dan ekspresi Pink Mochi, koleksi aksesori, ending baru, aksesibilitas, penyimpanan, layout 320/390/768/1440 px, dan PWA offline. Hasil dan screenshot disimpan di `test-results/`.
+Pengujian memakai Chromium sistem jika ada `/usr/bin/chromium`. Di mesin lain jalankan `npx playwright install chromium`, atau tentukan path melalui `PLAYWRIGHT_CHROMIUM_EXECUTABLE`. Suite berisi **83 tes** untuk seluruh fitur sebelumnya, portal, 60 fortune, 40 popup, 24 stiker, taman, kedua permainan yang ditingkatkan, game baru, ketiga ending, aksesibilitas, penyimpanan, layout 320/390/768/1440 px, interaksi touch, dan offline. Hasil dan screenshot disimpan di `test-results/`.
+
+Tes berjalan dengan satu worker untuk mesin cloud yang terbatas. Timeout skenario mencakup startup browser dan alur dengan puluhan interaksi; assertion tetap aktif. Tracing dapat dinyalakan dengan `PLAYWRIGHT_TRACE=1 npm test`. Build Pages dilakukan sebelum server preview mulai, sehingga kompilasi tidak menghabiskan waktu tunggu startup server.
 
 ## Deploy menjadi URL publik
 
@@ -71,5 +83,7 @@ Pengingat harian menggunakan tanggal lokal perangkat, tidak berubah saat refresh
 ## Mengubah konten
 
 Pesan mood, surat, pengingat, kejutan, dan surat penutup lama ada di `src/data.ts`. Maskot resmi ada di `src/PinkMochi.tsx` dan diekspor melalui `src/Mochi.tsx`; identitasnya mengikuti referensi desain. Perawatan dan penyimpanan profil ada di `src/Companion.tsx`, kamar di `src/MochiBedroom.tsx`, serta aksesori dan pesan baru di `src/mochi-data.ts`. Permainan ada di `src/Games.tsx`; gaya dasar ada di `src/styles.css` dan tema Pink Mochi di `src/pink-world.css`. Service worker dibuat saat build dengan daftar aset dan versi cache sesuai build, agar tidak menyimpan nama chunk lama.
+
+Fitur versi 2 dipisah di `src/universe/`: data, progres bersama, ilustrasi original, taman, hadiah, langit, album, game, mood rescue, dan pengaturan. Pengalaman popup dimuat sebagai chunk terpisah dan ikut dicache untuk offline. Hero, header, surat, daftar permainan lama, efek, serta halaman terakhir dipisah menjadi komponen reusable.
 
 Made for Maybe. Made with care. Made by Radli. ♡

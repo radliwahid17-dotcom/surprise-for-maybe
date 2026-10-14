@@ -40,6 +40,10 @@ const actionInfo = [
   { action: "sleep", label: "Tidur sebentar", icon: Moon },
   { action: "tickle", label: "Gelitik dikit", icon: Sparkles },
   { action: "talk", label: "Mochi, cerita dong", icon: Sun },
+  { action: "kiss", label: "Kirim kiss", icon: Heart },
+  { action: "spin", label: "Kelinci putar", icon: Sparkles },
+  { action: "hide", label: "Malu dikit", icon: PawPrint },
+  { action: "celebrate", label: "Rayakan hal kecil", icon: Sparkles },
 ] as const;
 
 export function MochiBedroom({

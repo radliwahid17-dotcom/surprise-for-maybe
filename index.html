@@ -26,7 +26,29 @@
     <title>MAYBEVERSE — A little happiness, just for Maybe</title>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div
+        role="status"
+        style="
+          min-height: 100dvh;
+          display: grid;
+          place-content: center;
+          text-align: center;
+          background: #fffaf6;
+          color: #694d49;
+          font: 14px system-ui;
+        "
+      >
+        <img
+          src="%BASE_URL%favicon.svg"
+          alt="Pink Mochi"
+          width="130"
+          height="150"
+          style="margin: auto"
+        />
+        <p>Mochi lagi mengempukkan bantal…</p>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

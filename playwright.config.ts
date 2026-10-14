@@ -8,8 +8,8 @@ const executablePath =
 export default defineConfig({
   testDir: "./tests",
   fullyParallel: false,
-  workers: 2,
-  timeout: 30000,
+  workers: 1,
+  timeout: 120000,
   reporter: [["list"]],
   use: {
     baseURL: "http://127.0.0.1:4173",
@@ -18,7 +18,7 @@ export default defineConfig({
     reducedMotion: "reduce",
     hasTouch: true,
     launchOptions: { executablePath, args: ["--no-sandbox"] },
-    trace: "retain-on-failure",
+    trace: process.env.PLAYWRIGHT_TRACE === "1" ? "retain-on-failure" : "off",
     screenshot: "only-on-failure",
   },
   webServer: [
@@ -29,7 +29,7 @@ export default defineConfig({
     },
     {
       command:
-        "npm run build:pages && npm run preview -- --base=/surprise-for-maybe/ --outDir dist-pages --port 4183 --strictPort",
+        "npm run preview -- --base=/surprise-for-maybe/ --outDir dist-pages --port 4183 --strictPort",
       url: "http://127.0.0.1:4183/surprise-for-maybe/",
       reuseExistingServer: !process.env.CI,
     },

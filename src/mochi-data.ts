@@ -15,6 +15,10 @@ export type CareAction =
   | "dance"
   | "talk"
   | "tickle"
+  | "kiss"
+  | "spin"
+  | "hide"
+  | "celebrate"
   | "wake";
 export type MochiProfile = {
   version: 1;
@@ -78,6 +82,12 @@ export const accessories: {
 
 export const snacks = [
   {
+    id: "mochi",
+    name: "Mochi manis",
+    emoji: "🍡",
+    line: "Mochi makan mochi. Ini bukan kanibalisme, May. Ini riset kuliner kelinci.",
+  },
+  {
     id: "strawberry",
     name: "Stroberi",
     emoji: "🍓",
@@ -104,6 +114,10 @@ export const snacks = [
 ];
 
 export const mochiSpeech: Record<CareAction, string[]> = {
+  kiss: ["Mwah! Cium virtual dikirim. Radli nitip satu juga ♡", "Mochi mau kirim kiss. Telinganya malu duluan."],
+  spin: ["Muter satu kali. Arah hidup masih dicari, tapi Maybe tetap favorit.", "WOOOSH! Kelinci putar, pikiran boleh berhenti sebentar."],
+  hide: ["Mochi sembunyi karena dipuji. Dua telinganya membocorkan lokasi.", "Kalau kamu bisa lihat telinganya, pura-pura nggak lihat dulu ya. Dia malu."],
+  celebrate: ["KONFETI KELINCI! Usaha kecil Maybe harus dirayakan.", "Mochi sudah siap tepuk tangan. Pencapaiannya: kamu hadir hari ini."],
   pet: [
     "Ihh May, dielus sedikit langsung jadi puding. Kelinci rasa sayang ♡",
     "Telinganya boleh panjang. Yang paling panjang tetep daftar alasan Mochi sayang kamu.",

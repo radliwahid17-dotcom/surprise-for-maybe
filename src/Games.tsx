@@ -9,6 +9,7 @@ type GameProps = {
   onComplete?: (score: number) => void;
   bestScore?: number;
   accessory?: Accessory;
+  onPopAll?: () => void;
 };
 type FallingHeart = { id: number; left: number; born: number; size: number };
 
@@ -25,6 +26,9 @@ export function CatchGame({
   const [seconds, setSeconds] = useState(30);
   const [score, setScore] = useState(0);
   const [hearts, setHearts] = useState<FallingHeart[]>([]);
+  const [combo, setCombo] = useState(0);
+  const lastCatch = useRef(0);
+  const level = seconds > 20 ? 1 : seconds > 10 ? 2 : 3;
   const serial = useRef(0);
   const finish = useRef(celebrate);
   finish.current = celebrate;
@@ -46,6 +50,7 @@ export function CatchGame({
       remainingTime.current = Math.max(0, initialRemaining - (now - start));
       const remaining = Math.ceil(remainingTime.current / 1000);
       setSeconds(remaining);
+      if (lastCatch.current && now - lastCatch.current > 1800) setCombo(0);
       if (remaining === 0) {
         if (completed) return;
         completed = true;
@@ -56,14 +61,14 @@ export function CatchGame({
         return;
       }
       if (now >= nextSpawn) {
-        nextSpawn = now + 480;
+        nextSpawn = now + (remaining > 20 ? 580 : remaining > 10 ? 480 : 390);
         setHearts((previous) => [
           ...previous.filter((heart) => now - heart.born < 4100),
           {
             id: serial.current++,
             left: 5 + Math.random() * 80,
             born: now,
-            size: 36 + Math.random() * 14,
+            size: 44 + Math.random() * 8,
           },
         ]);
       }
@@ -90,6 +95,8 @@ export function CatchGame({
   }, [phase]);
   function start() {
     caught.current.clear();
+    lastCatch.current = 0;
+    setCombo(0);
     remainingTime.current = 30000;
     setScore(0);
     setSeconds(30);
@@ -102,6 +109,7 @@ export function CatchGame({
   }
   function resume() {
     const duration = Date.now() - pausedAt.current;
+    if (lastCatch.current) lastCatch.current += duration;
     setHearts((previous) =>
       previous.map((heart) => ({ ...heart, born: heart.born + duration })),
     );
@@ -110,6 +118,9 @@ export function CatchGame({
   function catchHeart(id: number) {
     if (phase !== "playing" || caught.current.has(id)) return;
     caught.current.add(id);
+    const now = Date.now();
+    setCombo((previous) => (now - lastCatch.current < 1800 ? previous + 1 : 1));
+    lastCatch.current = now;
     sound();
     setScore((previous) => previous + 1);
     setHearts((previous) => previous.filter((heart) => heart.id !== id));
@@ -138,10 +149,17 @@ export function CatchGame({
           </button>
         )}
         <span className="catch-combo" aria-live="polite">
-          {score > 0 && score % 5 === 0
-            ? "A hug-sized combo! ✨"
+          {combo >= 2
+            ? combo + " hearts, one happy bunny!"
             : "Mochi is cheering for you"}
         </span>
+      </div>
+      <div className="catch-level">
+        <span>
+          Little level {level}/3 ·{" "}
+          {["Cloud meadow", "Strawberry breeze", "The lavender sky"][level - 1]}
+        </span>
+        <span>{combo > 1 ? combo + "× combo" : "Mochi’s cheering corner"}</span>
       </div>
       <div
         className={`catch-board ${phase}`}
@@ -156,8 +174,9 @@ export function CatchGame({
               className="falling-heart"
               style={
                 {
-                  left: `${heart.left}%`,
+                  left: `clamp(8px, ${heart.left}%, calc(100% - 56px))`,
                   "--heart-size": `${heart.size}px`,
+                  "--fall-duration": 4.7 - level * 0.5 + "s",
                 } as CSSProperties
               }
               aria-label="Tangkap hati"
@@ -187,12 +206,23 @@ export function CatchGame({
         )}
         {phase === "done" && (
           <div className="game-overlay result" role="status">
-            <span className="result-emoji">💗</span>
+            <Mochi
+              className="victory-bunny"
+              expression="celebrate"
+              accessory={accessory}
+            />
             <h3>CONGRATULATIONS!</h3>
             <p>You just collected 999 hugs from Radli!</p>
             <span>
               {score} hati tertangkap. Peluknya tetap nggak terbatas, May.
             </span>
+            <p className="catch-special-message">
+              {score >= 10
+                ? "Radli: May, lu jago. Mochi sudah menyiapkan podium yang sedikit kebesaran."
+                : score > 0
+                  ? "Setiap hati kecil dihitung. Setiap usaha Maybe juga. — Radli"
+                  : "Nggak apa-apa kalau belum ada yang ketangkap. Peluknya dari awal tetap disiapkan buat kamu."}
+            </p>
             <button className="primary-button" onClick={start}>
               <RotateCcw size={16} /> Main lagi
             </button>
@@ -223,12 +253,23 @@ export function BubbleGame({
   sound,
   onComplete,
   accessory = "none",
+  onPopAll,
 }: GameProps) {
   const [popped, setPopped] = useState<number[]>([]);
+  const [praise, setPraise] = useState("");
+  const compliments = [
+    "Maybe boleh bernapas sebentar.",
+    "Satu beban kecil dilepas. Mochi ikut lega.",
+    "Kamu nggak harus mengerjakan semuanya sekarang.",
+    "Mochi menilai kemampuan pop kamu: sangat lucu.",
+    "Deadline nggak bisa masuk bubble ini.",
+    "Radli bangga kamu kasih diri sendiri jeda.",
+  ];
   const poppedIds = useRef(new Set<number>());
   function reset() {
     poppedIds.current.clear();
     setPopped([]);
+    setPraise("");
   }
   function pop(index: number) {
     if (poppedIds.current.has(index)) return;
@@ -236,10 +277,24 @@ export function BubbleGame({
     sound();
     const next = [...poppedIds.current];
     setPopped(next);
+    if (Math.random() < 0.4)
+      setPraise(compliments[Math.floor(Math.random() * compliments.length)]);
     if (next.length === bubbleWords.length) {
       celebrate();
       onComplete?.(next.length);
     }
+  }
+  function popEverything() {
+    if (poppedIds.current.size === bubbleWords.length) return;
+    poppedIds.current = new Set(bubbleWords.map((_, index) => index));
+    setPopped([...poppedIds.current]);
+    setPraise(
+      "POOF! Seluruh bubble dilepas. Mochi menawarkan satu tarikan napas yang lebih ringan.",
+    );
+    sound();
+    celebrate();
+    onComplete?.(bubbleWords.length);
+    onPopAll?.();
   }
   return (
     <div className="game-content">
@@ -257,6 +312,16 @@ export function BubbleGame({
           <RotateCcw size={14} /> Ulangi
         </button>
       </div>
+      <button
+        className="secondary-button pop-everything"
+        disabled={popped.length === bubbleWords.length}
+        onClick={popEverything}
+      >
+        POP EVERYTHING!
+      </button>
+      <p className="bubble-praise" role="status">
+        {praise}
+      </p>
       {popped.length === bubbleWords.length ? (
         <div className="bubble-result" role="status">
           <Mochi className="dancing" accessory={accessory} />

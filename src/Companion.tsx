@@ -141,15 +141,39 @@ export function CompanionProvider({ children }: { children: ReactNode }) {
   const knownAccessories = useRef(new Set(profile.unlocked));
 
   useEffect(() => {
-    if (registered.current) return;
-    registered.current = true;
-    setProfile((previous) => ({
-      ...previous,
-      visits: previous.visits + 1,
-      lastSeen: Date.now(),
-    }));
+    if (!registered.current) {
+      registered.current = true;
+      setProfile((previous) => ({
+        ...previous,
+        visits: previous.visits + 1,
+        lastSeen: Date.now(),
+      }));
+    }
     if (returning) emotion("jump", 2600);
   }, []);
+  useEffect(() => {
+    let timer: ReturnType<typeof setTimeout> | null = null;
+    const rest = () => {
+      if (timer) clearTimeout(timer);
+      if (sleeping || document.hidden) return;
+      timer = setTimeout(() => {
+        care("sleep");
+        setSpeech(
+          "Zzz… kelincinya ketiduran. Sentuh pelan-pelan kalau mau ditemani lagi ♡",
+        );
+      }, 90000);
+    };
+    rest();
+    window.addEventListener("pointerdown", rest, { passive: true });
+    window.addEventListener("keydown", rest);
+    document.addEventListener("visibilitychange", rest);
+    return () => {
+      if (timer) clearTimeout(timer);
+      window.removeEventListener("pointerdown", rest);
+      window.removeEventListener("keydown", rest);
+      document.removeEventListener("visibilitychange", rest);
+    };
+  }, [sleeping]);
   useEffect(() => {
     save("mochi-profile", profile);
     const newlyUnlocked = profile.unlocked.filter(
@@ -182,6 +206,10 @@ export function CompanionProvider({ children }: { children: ReactNode }) {
     }, duration);
   }
   function care(action: CareAction, food?: { emoji: string; line: string }) {
+    if (sleeping && action === "pet") {
+      care("wake");
+      return;
+    }
     if (sleeping && action !== "wake" && action !== "sleep") {
       setSpeech(
         "Mochi lagi mimpi ketemu Maybe. Bangunkan pelan-pelan dulu, ya ♡",
@@ -201,12 +229,19 @@ export function CompanionProvider({ children }: { children: ReactNode }) {
       if (action === "wake") setSleeping(false);
       emotion(
         {
-          pet: "blush",
+          pet:
+            profile.pets % 10 === 9
+              ? "dance"
+              : ["blush", "jump", "kiss"][profile.pets % 3],
           feed: "eating",
           hug: "hug",
           dance: "dance",
           talk: "confused",
           tickle: "angry",
+          kiss: "kiss",
+          spin: "spin",
+          hide: "hide",
+          celebrate: "celebrate",
           wake: "jump",
         }[action],
       );
@@ -226,6 +261,10 @@ export function CompanionProvider({ children }: { children: ReactNode }) {
           dance: "dances",
           talk: "talks",
           tickle: "tickles",
+          kiss: null,
+          spin: null,
+          hide: null,
+          celebrate: null,
           wake: null,
         } as const
       )[action];

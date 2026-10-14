@@ -32,6 +32,10 @@ for (const [choice, answer] of [
   test(`welcome: ${choice}, only on first visit`, async ({ page }) => {
     await page.goto("/");
     await expect(page.getByRole("dialog")).toBeVisible();
+    await expect(page.getByRole("dialog")).toContainText("Are you");
+    await page
+      .getByRole("button", { name: "YESSS THAT’S MEEE 💗", exact: true })
+      .click();
     await page.getByRole("button", { name: choice }).click();
     await expect(page.getByRole("dialog")).toContainText(answer);
     await page.getByRole("button", { name: "Masuk ke duniaku" }).click();
@@ -64,11 +68,9 @@ test("all seven envelopes open and keyboard focus stays in dialog", async ({
 }) => {
   await visit(page);
   for (const note of notes) {
-    const card = page
-      .locator(".letter-card")
-      .filter({
-        has: page.getByRole("heading", { name: note.label, exact: true }),
-      });
+    const card = page.locator(".letter-card").filter({
+      has: page.getByRole("heading", { name: note.label, exact: true }),
+    });
     await card.click();
     await expect(page.getByRole("dialog")).toContainText(note.title);
     await expect(page.getByRole("dialog")).toContainText(
@@ -118,7 +120,8 @@ test("60 unique daily notes, stable on refresh, change at local midnight", async
 }) => {
   expect(sunshine.length).toBeGreaterThanOrEqual(60);
   expect(new Set(sunshine).size).toBe(sunshine.length);
-  await page.clock.install({ time: new Date("2026-10-14T16:59:45Z") });
+  await page.clock.install({ time: new Date("2026-10-14T16:59:00Z") });
+  await page.clock.pauseAt(new Date("2026-10-14T16:59:45Z"));
   await visit(page);
   await expect(page.locator(".date-chip")).toHaveText("14 Oktober");
   const initial = await page.locator(".daily-message").innerText();
@@ -388,6 +391,15 @@ test("PWA assets, offline reload and offline interactions", async ({
 for (const state of ["home", "letter", "night", "bubble", "message"]) {
   test(`accessibility: ${state}`, async ({ page }) => {
     await visit(page);
+    if (state === "home") {
+      await page
+        .getByRole("button", {
+          name: "Buka pengaturan dunia kecil",
+          exact: true,
+        })
+        .hover();
+      await expect(page.getByRole("tooltip")).toHaveCSS("opacity", "1");
+    }
     if (state === "letter") await page.locator(".letter-card").first().click();
     if (state === "night")
       await page.getByRole("button", { name: "Just between us" }).click();
