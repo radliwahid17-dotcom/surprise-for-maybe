@@ -2,6 +2,12 @@
 
 A tiny universe made just to see you smile. Dibuat untuk Maybe, dari Radli.
 
+## Buka website
+
+**[MAYBEVERSE — buka langsung di browser](https://radliwahid17-dotcom.github.io/surprise-for-maybe/)**
+
+Website sudah diterbitkan melalui GitHub Pages. Pengunjung cukup membuka link dari HP atau laptop.
+
 Website React + TypeScript + Vite dengan ilustrasi SVG orisinal, Motion, Lucide, dan font lokal. Tidak membutuhkan akun, database, API, atau variabel rahasia. Semua interaksi berjalan di browser; mood, sound, dan penemuan disimpan hanya di perangkat pengunjung.
 
 ## Unduh website
